@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf8">
+    <meta name="viewport" content="minimal-ui,width=device-width,initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <title>Vuex Getter</title>
+    <script src="vue.js"></script>
+    <script src="vuex.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ doneTodos }}
+    </div>
+    <script>
+        var store = new Vuex.Store({
+            state: {
+                todos: [
+                    {id: 1, text: 'a thing', done: true },
+                    {id: 2, text: 'B thing', done: false }
+                ]
+            },
+            getters: {
+                doneTodos: function(state){
+                    return state.todos.filter(function(todo){
+                        return todo.done;
+                    });
+                }
+            }
+        });
+        
+        var app = new Vue({
+            el: '#app',
+            store: store,
+            computed: {
+                doneTodos: function(){
+                    return this.$store.getters.doneTodos
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

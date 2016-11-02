@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf8">
+    <meta name="viewport" content="minimal-ui,width=device-width,initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <title>Vuex State</title>
+    <script src="vue.js"></script>
+    <script src="vuex.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ count }}
+    </div>
+    <script>
+        var store = new Vuex.Store({
+            state: {
+                count: 1
+            }
+        });
+        
+        var app = new Vue({
+            el: '#app',
+            store: store,
+            computed: {
+                count: function(){
+                    return this.$store.state.count
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf8">
+    <meta name="viewport" content="minimal-ui,width=device-width,initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <title>Vuex Action</title>
+    <script src="vue.js"></script>
+    <script src="vuex.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{ count }}
+        <button @click="increment">increment</button>
+    </div>
+    <script>
+        var store = new Vuex.Store({
+            state: {
+                count: 1
+            },
+            mutations: {
+                increment: function(state) {
+                    state.count++;
+                }
+            },
+            actions: {
+                increment: function(context) {
+                    context.commit('increment');
+                }
+            }
+        });
+        
+        var app = new Vue({
+            el: '#app',
+            store: store,
+            computed: {
+                count: function() {
+                    return this.$store.state.count
+                }
+            },
+            methods: {
+                increment: function() {
+                    this.$store.dispatch('increment');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
