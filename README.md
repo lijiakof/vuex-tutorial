@@ -31,7 +31,7 @@ refer to: https://vuex.vuejs.org/en/intro.html
 ### State
 * create Vuex.Store()
 * declare a state.count: `{ state: { count: 0 }}`
-* use in components: `this.$store.state.count`
+* use in components: `this.$store.state.count` 
 
 ### Getters
 * create Vuex.Store()
